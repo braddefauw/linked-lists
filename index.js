@@ -76,6 +76,27 @@ function LinkedList(){
             return current
         }
     }
+
+    // Remove the last element from the linked list
+    this.pop = function(){
+        if(!this.head){
+            // If the list is empty, there's nothing to pop.
+            return;
+        }
+        if(!this.head.nextNode){
+            // If there's only one element, set the head to null to empty the list.
+            this.head = null;
+            return
+        }
+
+        // Traverse the list to find the second-to-last element.
+        let current = this.head;
+        while(current.nextNode.nextNode){
+            current = current.nextNode;
+        }
+        // Update the nextNode of the second-to-last element to remove the last element.
+        current.nextNode = null;
+    }
 }
 
 // example usage
@@ -90,3 +111,5 @@ console.log(linkedList.size()); // Output: 3
 console.log(linkedList.findHead()) // Output: Node { value: 0, nextNode: Node { value: 1, nextNode: Node { value: 2, nextNode: null } } }
 console.log(linkedList.tail()) // Output: Node { value: 2, nextNode: null }
 console.log(linkedList.at(0)); // Output: Node { value: 0, nextNode: Node { value: 1, nextNode: Node { value: 2, nextNode: null } } }
+linkedList.pop();
+console.log(linkedList.toArray()); // Output: [0, 1]
