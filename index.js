@@ -39,6 +39,16 @@ function LinkedList(){
         }
         return result
     }
+
+    this.size = function(){
+        let count = 0;
+        let current = this.head;
+        while(current){
+            count++;
+            current = current.nextNode;
+        }
+        return count
+    }
 }
 
 // example usage
@@ -46,5 +56,7 @@ const linkedList = new LinkedList();
 linkedList.append(1);
 linkedList.append(2);
 console.log(linkedList.toArray()); // Output: [1, 2]
+console.log(linkedList.size()); // Output: 2
 linkedList.prepend(0);
 console.log(linkedList.toArray()) // Output: [0, 1, 2]
+console.log(linkedList.size()); // Output: 3
