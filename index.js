@@ -49,6 +49,13 @@ function LinkedList(){
         }
         return count
     }
+
+    /* Renaming the method to head would conflict with the existing head property of the LinkedList class. 
+    Since the head property already represents the first node in the list, 
+    using head as a method name would be confusing and could lead to errors. */
+    this.findHead = function(){
+        return this.head;
+    }
 }
 
 // example usage
@@ -60,3 +67,4 @@ console.log(linkedList.size()); // Output: 2
 linkedList.prepend(0);
 console.log(linkedList.toArray()) // Output: [0, 1, 2]
 console.log(linkedList.size()); // Output: 3
+console.log(linkedList.findHead()) // Node { value: 0, nextNode: Node { value: 1, nextNode: Node { value: 2, nextNode: null } } }
