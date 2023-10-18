@@ -56,6 +56,14 @@ function LinkedList(){
     this.findHead = function(){
         return this.head;
     }
+
+    this.tail = function(){
+        let current = this.head;
+        while(current && current.nextNode){
+            current = current.nextNode;
+        }
+        return current;
+    }
 }
 
 // example usage
@@ -67,4 +75,5 @@ console.log(linkedList.size()); // Output: 2
 linkedList.prepend(0);
 console.log(linkedList.toArray()) // Output: [0, 1, 2]
 console.log(linkedList.size()); // Output: 3
-console.log(linkedList.findHead()) // Node { value: 0, nextNode: Node { value: 1, nextNode: Node { value: 2, nextNode: null } } }
+console.log(linkedList.findHead()) // Output: Node { value: 0, nextNode: Node { value: 1, nextNode: Node { value: 2, nextNode: null } } }
+console.log(linkedList.tail()) // Output: Node { value: 2, nextNode: null }
