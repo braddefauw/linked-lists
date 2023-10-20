@@ -97,6 +97,18 @@ function LinkedList(){
         // Update the nextNode of the second-to-last element to remove the last element.
         current.nextNode = null;
     }
+
+    // check if the linked list contains the specified value
+    this.contains = function(value){
+        let current = this.head;
+        while(current){
+            if(current.value === value){
+                return true; //value found in the list
+            }
+            current = current.nextNode;
+        }
+        return false; //value not found in the list
+    }
 }
 
 // example usage
@@ -113,3 +125,5 @@ console.log(linkedList.tail()) // Output: Node { value: 2, nextNode: null }
 console.log(linkedList.at(0)); // Output: Node { value: 0, nextNode: Node { value: 1, nextNode: Node { value: 2, nextNode: null } } }
 linkedList.pop();
 console.log(linkedList.toArray()); // Output: [0, 1]
+console.log(linkedList.contains(1)); // Output: true
+console.log(linkedList.contains(3)); // Output: false
