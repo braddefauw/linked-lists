@@ -124,6 +124,20 @@ function LinkedList(){
         }
         return null; //value not found in the list
     }
+
+    // represent the linked list as a string
+    this.toString = function () {
+        let result = '';
+        let current = this.head;
+
+        while(current){
+            result += `(${current.value}) -> `;
+            current = current.nextNode;
+        }
+
+        result += 'null';
+        return result;
+    }
 }
 
 // example usage
@@ -144,3 +158,4 @@ console.log(linkedList.contains(1)); // Output: true
 console.log(linkedList.contains(3)); // Output: false
 console.log(linkedList.find(1)); // Output: 1 (index of the node with value 1)
 console.log(linkedList.find(5)); // Output: null (value not found in the list)
+console.log(linkedList.toString()); // Output: (0) -> (1) -> null
