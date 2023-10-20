@@ -138,6 +138,31 @@ function LinkedList(){
         result += 'null';
         return result;
     }
+    /* *** EXTRA CREDIT *** */
+
+    // insert a new node with the provided value at the given index
+    this.insertAt =  function(value, index){
+        if (index < 0 || index >  this.size()){
+            return; //invalid index
+        }
+        
+        const newNode = new Node(value);
+        if(index === 0){
+            // insert at the beginning of the list
+            newNode.nextNode = this.head;
+            this.head = newNode;
+        } else {
+            // insert at the specified index
+            let current = this.head;
+            for (let i = 0; i < index - 1; i++){
+                // traverse the list to find the node just before the specified index
+                current = current.nextNode;
+            }
+            // adjust pointers to insert the new node at the specified index
+            newNode.nextNode = current.nextNode;
+            current.nextNode = newNode;
+        }
+    }
 }
 
 // example usage
@@ -159,3 +184,5 @@ console.log(linkedList.contains(3)); // Output: false
 console.log(linkedList.find(1)); // Output: 1 (index of the node with value 1)
 console.log(linkedList.find(5)); // Output: null (value not found in the list)
 console.log(linkedList.toString()); // Output: (0) -> (1) -> null
+linkedList.insertAt(0.5, 1);
+console.log(linkedList.toString()); // Output: (0) -> (0.5) -> (1) -> null
