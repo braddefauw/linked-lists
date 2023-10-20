@@ -163,6 +163,26 @@ function LinkedList(){
             current.nextNode = newNode;
         }
     }
+
+    // remove a node at the given index
+    this.removeAt = function(index){
+        if (index < 0 || index >  this.size() || !this.head){
+            return; //invalid index or empty list
+        }
+
+        if(index === 0){
+            // if the index is 0, remove the first node
+            this.head = this.head.nextNode;
+        } else {
+            // if the index is not 0, remove the node at the specified index
+            let current = this.head;
+            for (let i = 0; i < index - 1; i++){
+                current = current.nextNode;
+            }
+            //adjust pointers to remove the node at the specified index
+            current.nextNode = current.nextNode.nextNode;
+        }
+    }
 }
 
 // example usage
@@ -186,3 +206,5 @@ console.log(linkedList.find(5)); // Output: null (value not found in the list)
 console.log(linkedList.toString()); // Output: (0) -> (1) -> null
 linkedList.insertAt(0.5, 1);
 console.log(linkedList.toString()); // Output: (0) -> (0.5) -> (1) -> null
+linkedList.removeAt(1);
+console.log(linkedList.toString()); // Output: (0) -> (1) -> null
