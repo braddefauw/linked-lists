@@ -109,6 +109,21 @@ function LinkedList(){
         }
         return false; //value not found in the list
     }
+
+    // find the index of the node containing the specified value, or return null if not found
+    this.find = function(value){
+        let current = this.head;
+        let index = 0;
+
+        while(current){
+            if(current.value === value){
+                return index; //value found at this index
+            }
+            current = current.nextNode;
+            index++
+        }
+        return null; //value not found in the list
+    }
 }
 
 // example usage
@@ -127,3 +142,5 @@ linkedList.pop();
 console.log(linkedList.toArray()); // Output: [0, 1]
 console.log(linkedList.contains(1)); // Output: true
 console.log(linkedList.contains(3)); // Output: false
+console.log(linkedList.find(1)); // Output: 1 (index of the node with value 1)
+console.log(linkedList.find(5)); // Output: null (value not found in the list)
